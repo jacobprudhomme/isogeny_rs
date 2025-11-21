@@ -6,7 +6,7 @@ use fp2::traits::Fp2 as FqTrait;
 
 impl<Fq: FqTrait> Curve<Fq> {
     /// Given xP and xQ as (X : Z) points, compute the point x(P ± Q) (sign is unknown).
-    fn projective_difference(&self, P: &PointX<Fq>, Q: &PointX<Fq>) -> PointX<Fq> {
+    pub fn projective_difference(&self, P: &PointX<Fq>, Q: &PointX<Fq>) -> PointX<Fq> {
         let mut t0 = P.X * Q.X;
         let mut t1 = P.Z * Q.Z;
         let mut bxx = t0 - t1;
