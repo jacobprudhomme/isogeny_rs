@@ -36,7 +36,7 @@ pub fn add_bn_vartime(a: &[u64], b: &[u64]) -> Vec<u64> {
         (sum[i], carry) = addcarry_u64(a[i], 0, carry);
     }
     if carry != 0 {
-        res.push(carry.into());
+        sum.push(carry.into());
     }
 
     sum
