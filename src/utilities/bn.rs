@@ -19,7 +19,7 @@ pub fn bn_bit_length_vartime(a: &[u64]) -> usize {
     (a.len() << 6) - (bn_leading_zeros_vartime(a) as usize)
 }
 
-fn mul_bn_by_u64_vartime(a: &[u64], b: u64) -> Vec<u64> {
+pub fn mul_bn_by_u64_vartime(a: &[u64], b: u64) -> Vec<u64> {
     // If a has length 1 then we can do a single double wide multiplication.
     if a.len() == 1 {
         let (n0, n1) = umull(a[0], b);
@@ -48,7 +48,7 @@ fn mul_bn_by_u64_vartime(a: &[u64], b: u64) -> Vec<u64> {
 
 /// Given two integers represented as u64 words (little endian) compute their
 /// product.
-fn mul_bn_vartime(a: &[u64], b: &[u64]) -> Vec<u64> {
+pub fn mul_bn_vartime(a: &[u64], b: &[u64]) -> Vec<u64> {
     // Assume that the length of b is smaller than the length of a for logic.
     if b.len() > a.len() {
         return mul_bn_vartime(b, a);
