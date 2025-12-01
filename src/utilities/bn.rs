@@ -21,10 +21,10 @@ pub fn bn_bit_length_vartime(a: &[u64]) -> usize {
 
 /// Given two integers represented as u64 words (little endian) compute their
 /// sum.
-pub fn add_bn_vartime(a: &[u64], b: &[u64]) -> Vec<u64> {
+pub fn bn_add_vartime(a: &[u64], b: &[u64]) -> Vec<u64> {
     // Assume that the length of b is smaller than the length of a for logic.
     if b.len() > a.len() {
-        return add_bn_vartime(b, a);
+        return bn_add_vartime(b, a);
     }
 
     let mut sum = vec![0; a.len()];
