@@ -1,8 +1,8 @@
 use fp2::traits::Fp as FpTrait;
 
 use crate::utilities::bn::{
-    bn_div4_vartime, bn_from_le_bytes, bn_is_zero_vartime, bn_lt_vartime, bn_set_div2_vartime,
-    bn_sub_into_vartime,
+    bn_div4_vartime, bn_from_le_bytes_vartime, bn_is_zero_vartime, bn_lt_vartime,
+    bn_set_div2_vartime, bn_sub_into_vartime,
 };
 use crate::utilities::le_bytes::encode_to_odd_binary;
 
@@ -500,8 +500,8 @@ impl<Fq: FpTrait> Curve<Fq> {
         b_bitlen: usize,
     ) -> PointX<Fq> {
         // Convert from le bytes to le u64 big numbers
-        let mut s0 = bn_from_le_bytes(a, a_bitlen);
-        let mut s1 = bn_from_le_bytes(b, b_bitlen);
+        let mut s0 = bn_from_le_bytes_vartime(a, a_bitlen);
+        let mut s1 = bn_from_le_bytes_vartime(b, b_bitlen);
 
         // Ensure s0, s1 have the same length for the arithmetic logic
         let s_len = s0.len().max(s1.len());

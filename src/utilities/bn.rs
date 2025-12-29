@@ -168,7 +168,7 @@ pub fn factorisation_to_bn_vartime(factorisation: &[(usize, usize)]) -> Vec<u64>
 
 /// Given an integer `a` represented as little endian bytes, compute an integer represented
 /// as little endian u64 words
-pub fn bn_from_le_bytes(a: &[u8], bit_len: usize) -> Vec<u64> {
+pub fn bn_from_le_bytes_vartime(a: &[u8], bit_len: usize) -> Vec<u64> {
     // For a 2^bit_len number we need n_words for our vector
     // We take 0 to be represented by a single word of all 0's
     let n_words = cmp::max(1, bit_len.div_ceil(64));
