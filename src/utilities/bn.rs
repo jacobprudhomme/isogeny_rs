@@ -1,3 +1,5 @@
+use core::cmp;
+
 use fp2::utils64::{addcarry_u64, umull, umull_add};
 
 /// Given an integer `a` represented with little endian u64 words, return the number
@@ -168,7 +170,8 @@ pub fn factorisation_to_bn_vartime(factorisation: &[(usize, usize)]) -> Vec<u64>
 /// as little endian u64 words
 pub fn bn_from_le_bytes(a: &[u8], bit_len: usize) -> Vec<u64> {
     // For a 2^bit_len number we need n_words for our vector
-    let n_words = bit_len.div_ceil(64);
+    // We take 0 to be represented by a single word of all 0's
+    let n_words = cmp::max(1, bit_len.div_ceil(64));
     let mut n: Vec<u64> = vec![0; n_words];
 
     // Take 8 bytes at a time from the array to make u64 words
