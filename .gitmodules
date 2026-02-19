@@ -1,4 +1,0 @@
-[submodule "fp2"]
-	path = fp2
-	url = git@github.com:jacobprudhomme/fp2.git
-	branch = additions-for-poke

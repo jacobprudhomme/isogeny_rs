@@ -226,6 +226,7 @@ checksum = "48c757948c5ede0e46177b7add2e67155f70e33c07fea8284df6576da70b3719"
 [[package]]
 name = "fp2"
 version = "0.3.0"
+source = "git+https://github.com/jacobprudhomme/fp2?branch=additions-for-poke#d3696aede54a5900425dec6cb41a73f24a473d5c"
 dependencies = [
  "rand_core",
 ]
